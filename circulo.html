@@ -5,12 +5,30 @@
     <script src="https://raw.github.com/kangax/fabric.js/master/dist/all.js"></script>
   </head>
   <body>
+    <button id="animar" name="animar">Animar</button>
     <canvas id="c" width="960" height="500" style="border:1px solid #ccc"></canvas>
     <script>
       (function() {
-
         var canvas = new fabric.Canvas('c');
+        var circulo = new fabric.Circle({
+          left: 100,
+          top: 150,
+          fill: "orange",
+          radius: 25
+        })
 
+        canvas.add(circulo);
+
+        animar.addEventListener("click",
+          function(){
+            circulo.animate('left', '+200', {
+              onChange:canvas.renderAll.bind(canvas),
+              duration: 1000,
+              easing: fabric.util.ease.easeOutBounce
+            });
+          },
+          false
+        );
       })();
     </script>
   </body>
