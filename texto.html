@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+
   <script src="https://raw.github.com/kangax/fabric.js/master/dist/all.js"></script>
   <style>
     #wrapper{
@@ -48,36 +48,15 @@
   <script>
   (function(){
     var canvas = new fabric.Canvas('c')
-    var texto = new fabric.Text("Same Text",
-      {
-        left:100,
-        top: 100,
-      }
-    );
-    var texto2 = new fabric.Text("Other Same Text malandro",
-      {
-        left:100,
-        top: 200
-      }
-    );
-    canvas.add(texto, texto2);
-    names.addEventListener("keyup",
-      function(){
-        var _name = this.value;
-        texto.text = _name;
-        canvas.renderAll();
-      },
-      false
-    );
-    address.addEventListener("keyup",
-      function(){
-        var _address = this.value;
-        texto2.text = _address;
-        canvas.renderAll();
-      },
-      false
-    );
-    //canvas.add(texto);
+    fabric.loadSVGFromURL('convite_floral.svg', function(objects, options) {
+      var loadedObject = fabric.util.groupSVGElements(objects, options);
+
+
+
+      loadedObject.scaleToWidth(650);
+      canvas.add(loadedObject);
+      canvas.renderAll();
+    });
   })();
   </script>
 </body>
